@@ -111,8 +111,6 @@
               },
               "name": "wait_onFailure",
               "description": "Wait for 300 seconds on 2nd try and 900 seconds on 3rd try.",
-              "state": "Inactive",
-              "onInactiveMarkAs": "Succeeded",
               "dependsOn": [
                 {
                   "activity": "set_varCounter",
