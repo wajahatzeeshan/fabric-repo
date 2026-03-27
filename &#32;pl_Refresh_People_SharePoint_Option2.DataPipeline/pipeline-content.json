@@ -1,0 +1,153 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "Until",
+        "typeProperties": {
+          "expression": {
+            "value": "@or(equals(variables('varCounter'),3), equals(variables('varIsSuccess'),variables('varSuccess')))",
+            "type": "Expression"
+          },
+          "timeout": "0.12:00:00",
+          "activities": [
+            {
+              "type": "RefreshDataflow",
+              "typeProperties": {
+                "dataflowId": "62953168-837a-8db2-4164-394306c43d9c",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "notifyOption": "NoNotification",
+                "dataflowType": "DataflowFabric"
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "dfactivity_People_SharePoint",
+              "description": "Dataflow activity to refresh df_People_Sharepoint dataflow.",
+              "dependsOn": []
+            },
+            {
+              "type": "SetVariable",
+              "typeProperties": {
+                "variableName": "varIsSuccess",
+                "value": {
+                  "value": "@variables('varSuccess')",
+                  "type": "Expression"
+                }
+              },
+              "policy": {
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "set_varIsSuccess",
+              "description": "Set variable varIsSuccess to Yes.",
+              "dependsOn": [
+                {
+                  "activity": "dfactivity_People_SharePoint",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "SetVariable",
+              "typeProperties": {
+                "variableName": "varTempCounter",
+                "value": {
+                  "value": "@variables('varCounter')",
+                  "type": "Expression"
+                }
+              },
+              "policy": {
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "set_varTempCounter",
+              "description": "Increment variable varTempCounter.",
+              "dependsOn": [
+                {
+                  "activity": "dfactivity_People_SharePoint",
+                  "dependencyConditions": [
+                    "Failed"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "SetVariable",
+              "typeProperties": {
+                "variableName": "varCounter",
+                "value": {
+                  "value": "@variables('varTempCounter')",
+                  "type": "Expression"
+                }
+              },
+              "policy": {
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "set_varCounter",
+              "description": "Increment variable varCounter.",
+              "dependsOn": [
+                {
+                  "activity": "set_varTempCounter",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@if(\n    greater(variables('varCounter'), 1),\n    if(equals(variables('varCounter'), 2),\n        mul(variables('varWaitTime'),15 ),\n        mul(variables('varWaitTime'), 0)\n    ),\n    mul(variables('varWaitTime'),5 )\n)",
+                  "type": "Expression"
+                }
+              },
+              "name": "wait_onFailure",
+              "description": "Wait for 300 seconds on 2nd try and 900 seconds on 3rd try.",
+              "dependsOn": [
+                {
+                  "activity": "set_varCounter",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "name": "Iterator",
+        "description": "Iterator to refresh dataflow. It will retry up to 3 times.",
+        "dependsOn": []
+      }
+    ],
+    "variables": {
+      "varCounter": {
+        "type": "Integer",
+        "defaultValue": 0
+      },
+      "varTempCounter": {
+        "type": "Integer",
+        "defaultValue": 0
+      },
+      "varIsSuccess": {
+        "type": "String",
+        "defaultValue": "No"
+      },
+      "varSuccess": {
+        "type": "String",
+        "defaultValue": "Yes"
+      },
+      "varWaitTime": {
+        "type": "Integer",
+        "defaultValue": 60
+      }
+    }
+  }
+}

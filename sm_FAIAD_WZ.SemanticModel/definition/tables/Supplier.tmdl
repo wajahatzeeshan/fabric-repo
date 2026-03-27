@@ -1,0 +1,65 @@
+table Supplier
+	lineageTag: f051413b-a1bb-4a93-9660-75a13c035045
+	sourceLineageTag: [dbo].[Supplier]
+
+	column SupplierID
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: bbb19b0c-d5fc-48ea-b263-7027a75f6ac0
+		sourceLineageTag: SupplierID
+		summarizeBy: none
+		sourceColumn: SupplierID
+
+		annotation SummarizationSetBy = Automatic
+
+	column SupplierName
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: e04dff8b-8336-425a-8389-93779ecc9ebe
+		sourceLineageTag: SupplierName
+		summarizeBy: none
+		sourceColumn: SupplierName
+
+		annotation SummarizationSetBy = Automatic
+
+	column SupplierCategoryID
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 22f306b6-daba-4961-853b-7066ae0e454a
+		sourceLineageTag: SupplierCategoryID
+		summarizeBy: none
+		sourceColumn: SupplierCategoryID
+
+		annotation SummarizationSetBy = Automatic
+
+	column WebsiteURL
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 5760ed80-58ad-4f4f-8d46-fb51e8347fd7
+		sourceLineageTag: WebsiteURL
+		summarizeBy: none
+		sourceColumn: WebsiteURL
+
+		annotation SummarizationSetBy = Automatic
+
+	column SupplierCategoryName
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 794160a7-9063-4cae-8eff-71003db3c29b
+		sourceLineageTag: SupplierCategoryName
+		summarizeBy: none
+		sourceColumn: SupplierCategoryName
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Supplier = entity
+		mode: directLake
+		source
+			entityName: Supplier
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

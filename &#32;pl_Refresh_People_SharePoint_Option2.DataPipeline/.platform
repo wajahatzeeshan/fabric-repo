@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": " pl_Refresh_People_SharePoint_Option2"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "d7f5277e-d116-ad7e-4e86-9c2733ad6370"
+  }
+}

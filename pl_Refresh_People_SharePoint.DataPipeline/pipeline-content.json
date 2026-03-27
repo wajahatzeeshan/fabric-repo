@@ -1,0 +1,25 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "RefreshDataflow",
+        "typeProperties": {
+          "dataflowId": "62953168-837a-8db2-4164-394306c43d9c",
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "notifyOption": "NoNotification",
+          "dataflowType": "DataflowFabric"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 3,
+          "retryIntervalInSeconds": 600,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "dfactivity_People_SharePoint",
+        "description": " Dataflow activity to refresh df_People_Sharepoint dataflow",
+        "dependsOn": []
+      }
+    ]
+  }
+}

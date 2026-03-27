@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Dataflow",
+    "displayName": "df_People_SharePoint",
+    "description": "Dataflow to ingest People data from SharePoint to Lakehouse"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "62953168-837a-8db2-4164-394306c43d9c"
+  }
+}
