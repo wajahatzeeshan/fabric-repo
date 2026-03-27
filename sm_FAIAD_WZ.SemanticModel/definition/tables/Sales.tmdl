@@ -1,0 +1,201 @@
+table Sales
+	lineageTag: 4fa70cdc-8b31-484d-a8ea-f449850c4c9e
+	sourceLineageTag: [dbo].[Sales]
+
+	measure Sales = SUM('Sales'[Sales Amount])
+		lineageTag: f2a3606f-8cd4-428c-ad68-197e16b4c558
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Units = SUM('Sales'[Quantity])
+		formatString: 0
+		lineageTag: 70dff295-55af-452d-b038-7ae0c84e6882
+
+		changedProperty = Name
+
+	measure 'Sales Orders' = DISTINCTCOUNT('Sales'[InvoiceID])
+		formatString: 0
+		lineageTag: c6d73ca0-d7f1-4bdb-9c17-4d4aea07bb00
+
+		changedProperty = Name
+
+	measure 'Avg Order' = DIVIDE([Sales], [Sales Orders])
+		lineageTag: a9f8d90b-5739-4008-a29b-6b5521cfd44c
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure GM = SUM('Sales'[LineProfit])
+		lineageTag: 40f573b5-efc2-42d8-a84b-578e98ea5b27
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure GM% = DIVIDE([GM], [Sales])
+		lineageTag: d309a072-f73e-420e-a119-82d8ae057fa9
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column InvoiceLineID
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 759da9b0-5bd6-4f8d-b5d7-6e637aa092fa
+		sourceLineageTag: InvoiceLineID
+		summarizeBy: count
+		sourceColumn: InvoiceLineID
+
+		annotation SummarizationSetBy = Automatic
+
+	column InvoiceID
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: a63786b9-63ce-498f-9a2a-acf77049edbe
+		sourceLineageTag: InvoiceID
+		summarizeBy: count
+		sourceColumn: InvoiceID
+
+		annotation SummarizationSetBy = Automatic
+
+	column StockItemID
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 43f3734f-d471-4ab8-a6cf-d728ddc29863
+		sourceLineageTag: StockItemID
+		summarizeBy: count
+		sourceColumn: StockItemID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quantity
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: de33a4df-1c9c-44d4-8d1f-27d4531b2ca5
+		sourceLineageTag: Quantity
+		summarizeBy: sum
+		sourceColumn: Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column UnitPrice
+		dataType: double
+		sourceProviderType: float
+		lineageTag: c56695a3-ad0f-4f66-886e-27d907dfac6e
+		sourceLineageTag: UnitPrice
+		summarizeBy: sum
+		sourceColumn: UnitPrice
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxRate
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 9ac7315c-e3af-4620-8cde-93dc9678868e
+		sourceLineageTag: TaxRate
+		summarizeBy: sum
+		sourceColumn: TaxRate
+
+		annotation SummarizationSetBy = Automatic
+
+	column TaxAmount
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 251b2376-c8ca-4185-b447-50c0471e9832
+		sourceLineageTag: TaxAmount
+		summarizeBy: sum
+		sourceColumn: TaxAmount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column LineProfit
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 14360aef-95c9-469b-ad3f-f5df90bf502f
+		sourceLineageTag: LineProfit
+		summarizeBy: sum
+		sourceColumn: LineProfit
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ExtendedPrice
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 0166fa59-8bf9-4282-9cd4-3cdf0b82fe31
+		sourceLineageTag: ExtendedPrice
+		summarizeBy: sum
+		sourceColumn: ExtendedPrice
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ResellerID
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 09e55d20-a1ba-4bdf-9e40-30c1b8db0098
+		sourceLineageTag: ResellerID
+		summarizeBy: none
+		sourceColumn: ResellerID
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalespersonPersonID
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 19eaff41-e517-4967-804e-1573d97e2534
+		sourceLineageTag: SalespersonPersonID
+		summarizeBy: none
+		sourceColumn: SalespersonPersonID
+
+		annotation SummarizationSetBy = Automatic
+
+	column InvoiceDate
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: c1d783f1-2308-44c8-9ba6-0e8184002726
+		sourceLineageTag: InvoiceDate
+		summarizeBy: none
+		sourceColumn: InvoiceDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sales Amount'
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 3d852368-71b5-487f-974f-b14628f1209e
+		sourceLineageTag: Sales Amount
+		summarizeBy: sum
+		sourceColumn: Sales Amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Sales = entity
+		mode: directLake
+		source
+			entityName: Sales
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,147 @@
+table Geo
+	lineageTag: 42a45212-e4cb-419a-8ec7-ef79cf82d011
+	sourceLineageTag: [dbo].[Geo]
+
+	column CityID
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: f4769243-47ee-4810-87ed-aed5f4186c24
+		sourceLineageTag: CityID
+		summarizeBy: none
+		sourceColumn: CityID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CityName
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 39bb4c1c-ee27-469c-969e-14cc5ddbc2e3
+		sourceLineageTag: CityName
+		summarizeBy: none
+		sourceColumn: CityName
+
+		annotation SummarizationSetBy = Automatic
+
+	column LatestRecordedPopulation
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 2331a543-55de-43ad-a90f-6061c7808ff1
+		sourceLineageTag: LatestRecordedPopulation
+		summarizeBy: sum
+		sourceColumn: LatestRecordedPopulation
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column StateProvinceCode
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 1d73a321-ff46-4117-91c2-d3ff25620627
+		sourceLineageTag: StateProvinceCode
+		summarizeBy: none
+		sourceColumn: StateProvinceCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column StateProvinceName
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 1b2cf347-e17c-490d-8903-306a3f486429
+		sourceLineageTag: StateProvinceName
+		summarizeBy: none
+		sourceColumn: StateProvinceName
+
+		annotation SummarizationSetBy = Automatic
+
+	column CountryName
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 06746df8-9630-4174-8f8f-cfc1898a492e
+		sourceLineageTag: CountryName
+		summarizeBy: none
+		sourceColumn: CountryName
+
+		annotation SummarizationSetBy = Automatic
+
+	column FormalName
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 72a0bd4b-dd39-452a-a602-82c9d086902a
+		sourceLineageTag: FormalName
+		summarizeBy: none
+		sourceColumn: FormalName
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsoAlpha3Code
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: b07abe46-1560-4641-998c-985aced5c037
+		sourceLineageTag: IsoAlpha3Code
+		summarizeBy: none
+		sourceColumn: IsoAlpha3Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsoNumericCode
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 16542962-39dc-4917-a5d6-c1c5e020877b
+		sourceLineageTag: IsoNumericCode
+		summarizeBy: count
+		sourceColumn: IsoNumericCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column CountryType
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: dc1e0520-78a2-40fb-b632-3cab3faa4a97
+		sourceLineageTag: CountryType
+		summarizeBy: none
+		sourceColumn: CountryType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Continent
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 6284cbd3-ec3c-4694-bb7c-f6370cb18791
+		sourceLineageTag: Continent
+		summarizeBy: none
+		sourceColumn: Continent
+
+		annotation SummarizationSetBy = Automatic
+
+	column Region
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 097b60e5-5f17-459e-9505-2c41b579084e
+		sourceLineageTag: Region
+		summarizeBy: none
+		sourceColumn: Region
+
+		annotation SummarizationSetBy = Automatic
+
+	column Subregion
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 294fff1b-e485-4434-ad49-bdb01f7222aa
+		sourceLineageTag: Subregion
+		summarizeBy: none
+		sourceColumn: Subregion
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Geo = entity
+		mode: directLake
+		source
+			entityName: Geo
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,151 @@
+table Customer
+	lineageTag: e40fd9a3-24d9-454f-b19a-ac3ddb02a791
+	sourceLineageTag: [dbo].[Customer]
+
+	measure 'No of Customers' = COUNTROWS(Customer)
+		formatString: 0
+		lineageTag: 282c2ae9-2fc2-44c1-b041-581c5534d341
+
+		changedProperty = Name
+
+	column CustomerID
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 1f6071b4-74a2-4bd3-b626-193aaa39ba70
+		sourceLineageTag: CustomerID
+		summarizeBy: none
+		sourceColumn: CustomerID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Address
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: a6ba4c93-6026-46a7-9d4f-57eb2b60ef32
+		sourceLineageTag: Address
+		summarizeBy: none
+		sourceColumn: Address
+
+		annotation SummarizationSetBy = Automatic
+
+	column Age
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: c6c5b0e1-b7ca-4bde-8c90-efb64631b898
+		sourceLineageTag: Age
+		summarizeBy: sum
+		sourceColumn: Age
+
+		annotation SummarizationSetBy = Automatic
+
+	column BrandAffinity
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 41e89c69-37d5-4fe6-a4f0-d1524aed03f0
+		sourceLineageTag: BrandAffinity
+		summarizeBy: none
+		sourceColumn: BrandAffinity
+
+		annotation SummarizationSetBy = Automatic
+
+	column City
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: ce656899-cb88-48e5-a001-8f5247c31f69
+		sourceLineageTag: City
+		summarizeBy: none
+		sourceColumn: City
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: ed108ede-e708-4e16-9bd3-0d0a26fcee9f
+		sourceLineageTag: Country
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column FullName
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 5f2ec6b6-1f2f-4c9d-9747-4f063c2c4152
+		sourceLineageTag: FullName
+		summarizeBy: none
+		sourceColumn: FullName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Generation
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 3122e56b-47cc-4608-9efb-9a00ea49662f
+		sourceLineageTag: Generation
+		summarizeBy: none
+		sourceColumn: Generation
+
+		annotation SummarizationSetBy = Automatic
+
+	column InterestAffinity1
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: d6e11aee-f9fc-43d9-befa-c985807c265e
+		sourceLineageTag: InterestAffinity1
+		summarizeBy: none
+		sourceColumn: InterestAffinity1
+
+		annotation SummarizationSetBy = Automatic
+
+	column InterestAffinity2
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 00f9722b-fa5b-45eb-9d68-b8847726c1bb
+		sourceLineageTag: InterestAffinity2
+		summarizeBy: none
+		sourceColumn: InterestAffinity2
+
+		annotation SummarizationSetBy = Automatic
+
+	column ResellerID
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 03b7bcf8-11af-4fd1-a347-d04cda553e22
+		sourceLineageTag: ResellerID
+		summarizeBy: none
+		sourceColumn: ResellerID
+
+		annotation SummarizationSetBy = Automatic
+
+	column State
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: c92c0a88-58c6-4e82-83ac-a1325035c7d5
+		sourceLineageTag: State
+		summarizeBy: none
+		sourceColumn: State
+
+		annotation SummarizationSetBy = Automatic
+
+	column ZipCode
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: ecb3cd34-fbc4-4b90-a591-c3e6aa7a4253
+		sourceLineageTag: ZipCode
+		summarizeBy: none
+		sourceColumn: ZipCode
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Customer = entity
+		mode: directLake
+		source
+			entityName: Customer
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

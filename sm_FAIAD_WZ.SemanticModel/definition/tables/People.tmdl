@@ -1,0 +1,65 @@
+table People
+	lineageTag: 8ca5cb83-73c7-432c-bd4b-c8f81caa71f9
+	sourceLineageTag: [dbo].[People]
+
+	column PersonID
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: d0ed83b1-0b77-4b77-a8b5-fd14f10ce526
+		sourceLineageTag: PersonID
+		summarizeBy: none
+		sourceColumn: PersonID
+
+		annotation SummarizationSetBy = Automatic
+
+	column FullName
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 529c5507-21fc-4053-8f04-5317668706dd
+		sourceLineageTag: FullName
+		summarizeBy: none
+		sourceColumn: FullName
+
+		annotation SummarizationSetBy = Automatic
+
+	column PreferredName
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: d98ad997-5852-4859-bd0f-b7d682e33177
+		sourceLineageTag: PreferredName
+		summarizeBy: none
+		sourceColumn: PreferredName
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsSalesperson
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: bit
+		lineageTag: c2da4f97-6d96-440c-8483-bab64458948a
+		sourceLineageTag: IsSalesperson
+		summarizeBy: none
+		sourceColumn: IsSalesperson
+
+		annotation SummarizationSetBy = Automatic
+
+	column EmailAddress
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 113eea06-fbb7-49c0-8df0-9513cab3a512
+		sourceLineageTag: EmailAddress
+		summarizeBy: none
+		sourceColumn: EmailAddress
+
+		annotation SummarizationSetBy = Automatic
+
+	partition People = entity
+		mode: directLake
+		source
+			entityName: People
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

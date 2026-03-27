@@ -1,0 +1,38 @@
+{
+  "formatVersion": "202502",
+  "computeEngineSettings": {},
+  "name": "Dataflow 1",
+  "queryGroups": [],
+  "documentLocale": "en-US",
+  "queriesMetadata": {
+    "DefaultDestination": {
+      "queryId": "6b0470d8-2d63-4782-b1c5-9ce630817175",
+      "queryName": "DefaultDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "People": {
+      "queryId": "d7ce6a46-0c7b-46fd-8c96-d9417e1987d3",
+      "queryName": "People",
+      "loadEnabled": false
+    },
+    "People_DataDestination": {
+      "queryId": "90c9558e-657f-4bbf-90fc-4221b8aa1a6c",
+      "queryName": "People_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    }
+  },
+  "connections": [
+    {
+      "path": "Lakehouse",
+      "kind": "Lakehouse",
+      "connectionId": "{\"ClusterId\":\"573f056b-2e63-4fb7-826b-38f178d7a3e0\",\"DatasourceId\":\"6fd8575c-b00f-4dc3-a754-9789daa8b32f\"}"
+    },
+    {
+      "path": "https://faiad2024.sharepoint.com/sites/Fabrikam_HR",
+      "kind": "SharePoint",
+      "connectionId": "{\"ClusterId\":\"573f056b-2e63-4fb7-826b-38f178d7a3e0\",\"DatasourceId\":\"83b81737-7d5f-4c8c-b130-b21ee00a85ff\"}"
+    }
+  ]
+}
