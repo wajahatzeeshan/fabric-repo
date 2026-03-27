@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "AddRow_People"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "15fdb13f-110f-9e92-4716-afb558a20592"
+  }
+}
