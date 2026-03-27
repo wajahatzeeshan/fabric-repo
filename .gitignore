@@ -416,3 +416,20 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+# Ignore all table data files
+*.csv
+*.parquet
+
+# Ignore temporary files
+*.tmp
+*.log
+
+# Ignore table data / cached rows
+*.table
+*.json.table_data
+data/
+samples/
+
+# Keep Fabric sync metadata
+!cache.mbf
